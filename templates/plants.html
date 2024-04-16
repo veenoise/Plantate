@@ -1,0 +1,100 @@
+{% extends 'base-template.html' %}
+{% block body %}
+<main>
+  <div class="add-item" data-bs-toggle="modal" data-bs-target="#add-plant">
+    <img src="{{ url_for('static', filename='icon-add.png') }}" alt="add-button" width="75px">
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="add-plant" tabindex="-1" aria-labelledby="add-plant" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add a plant to your collection</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="selfie">Take a picture of your face:</label>
+
+          <input type="file" id="selfie" name="selfie" accept="image/*" capture="user" />
+
+          <label for="picture">Take a picture using back facing camera:</label>
+
+          <input type="file" id="picture" name="picture" accept="image/*" capture="environment" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success">Add plant</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-modified">
+    <div class="row">
+      <div class="col">
+        <img loading="lazy" src="{{ url_for('static', filename='lettuce.webp') }}" alt="lettuce">
+        <div class="overlay"></div>
+        <div class="col-item-text">
+          <h3>Lettuce</h3>
+          <p>20 days till harvest</p>
+        </div>
+      </div>
+      <div class="col">
+        <img loading="lazy" src="{{ url_for('static', filename='cucumber.webp') }}" alt="cucumber">
+        <div class="overlay"></div>
+        <div class="col-item-text">
+          <h3>Cucumber</h3>
+          <p>20 days till harvest</p>
+        </div>
+      </div>
+      <div class="col">
+        <img loading="lazy" src="{{ url_for('static', filename='tomatoes.webp') }}" alt="tomatoes">
+        <div class="overlay"></div>
+        <div class="col-item-text">
+          <h3>Tomatoes</h3>
+          <p>20 days till harvest</p>
+        </div>
+      </div>
+      <div class="col">
+        <img loading="lazy" src="{{ url_for('static', filename='onion.webp') }}" alt="onion">
+        <div class="overlay"></div>
+        <div class="col-item-text">
+          <h3>Onion</h3>
+          <p>20 days till harvest</p>
+        </div>
+      </div>
+      <div class="col">
+        <img loading="lazy" src="{{ url_for('static', filename='thyme.webp') }}" alt="thyme">
+        <div class="overlay"></div>
+        <div class="col-item-text">
+          <h3>Thyme</h3>
+          <p>20 days till harvest</p>
+        </div>
+      </div>
+      <div class="col">
+        <img loading="lazy" src="{{ url_for('static', filename='basil.webp') }}" alt="basil">
+        <div class="overlay"></div>
+        <div class="col-item-text">
+          <h3>Basil</h3>
+          <p>20 days till harvest</p>
+        </div>
+      </div>
+      <div class="col">
+        <img loading="lazy" src="{{ url_for('static', filename='rosemary.webp') }}" alt="rosemary">
+        <div class="overlay"></div>
+        <div class="col-item-text">
+          <h3>Rosemary</h3>
+          <p>20 days till harvest</p>
+        </div>
+      </div>
+      <div class="col">
+        <img loading="lazy" src="{{ url_for('static', filename='ginger.webp') }}" alt="ginger">
+        <div class="overlay"></div>
+        <div class="col-item-text">
+          <h3>Ginger</h3>
+          <p>20 days till harvest</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

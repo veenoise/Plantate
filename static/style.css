@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.add-item {
+  visibility: visible;
+  img {
+    position: fixed;
+    bottom: 45px;
+    right: 45px;
+    z-index: 25;
+  }
+
+  img:hover {
+    cursor: pointer;
+    background-color: #90CF8E;
+    border: 1px solid #90CF8E;
+    border-radius: 50px;
+  }
+}
+
+main {
+  background-color: #FAFEFA;
+}
+
+nav {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  
+  .container-fluid {
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #EEFFEE;
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-size: 50px;
+      color: #90CF8E;
+
+      img {
+        padding-right: 15px;
+      }
+    }
+
+    .navbar-collapse {
+      justify-content: right;
+      font-size: 20px;
+
+      .nav-item > .nav-link {
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+
+        img {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.container-modified {
+  padding: 60px 90px;
+
+  .row {
+    display: grid;
+    justify-items: center;
+    column-gap: 50px;
+    row-gap: 45px;
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+   
+    .col {
+      padding: 0;
+      width: 238px;
+      height: 276px;
+      border-radius: 16px;
+      box-shadow: 5px 10px 15px -3px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 16px;
+        display: block;
+        object-fit: cover;
+      }
+
+      .overlay {
+        position: absolute;
+        bottom: 0%;
+        width: 100%;
+        z-index: 10;
+        height: 40%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
+
+      .col-item-text {
+        z-index: 15;
+        padding-left: 10px;
+        padding-right: 10px;
+        position: absolute;
+        bottom: 0%;
+        color: #EEFFEE;
+        width: 100%;
+        h3 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .col:hover {
+      border: solid #90CF8E 5px;
+      border-radius: 21px;
+      cursor: pointer;
+    }
+  }
+}
