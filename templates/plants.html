@@ -1,25 +1,43 @@
 {% extends 'base-template.html' %}
+{% block additionalCss %}
+{% endblock %}
 {% block body %}
 <main>
   <div class="add-item" data-bs-toggle="modal" data-bs-target="#add-plant">
     <img src="{{ url_for('static', filename='icon-add.png') }}" alt="add-button" width="75px">
   </div>
+
   <!-- Modal -->
   <div class="modal fade" id="add-plant" tabindex="-1" aria-labelledby="add-plant" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add a plant to your collection</h1>
+          <h1 class="modal-title fs-5" id="modalLabel">Add a plant to your collection</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <label for="selfie">Take a picture of your face:</label>
+          <div id="outputs">
+            <img class="picture-placeholder" alt="Placeholder for the image preview">
+            <div id="video-stream-placeholder"></div>
+          </div>
 
-          <input type="file" id="selfie" name="selfie" accept="image/*" capture="user" />
-
-          <label for="picture">Take a picture using back facing camera:</label>
-
-          <input type="file" id="picture" name="picture" accept="image/*" capture="environment" />
+          <div class="mb-3 inputs">
+            <input class="form-control mb-3" type="file" accept=".jpg, .jpeg, .webp, .png" id="picture">
+            <p class="text-center mb-3">-- or --</p>
+            <button id="take-picture" class="btn btn-success">Take a picture</button>
+          </div>
+          <div class="mb-3">
+            <label for="plantName" class="form-label">Plant name</label>
+            <input type="text" id="plantName" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="datePlanted" class="form-label">Date planted</label>
+            <input type="date" id="datePlanted" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="plantDesription" class="form-label">Description (optional)</label>
+            <input type="text" id="plantDesription" class="form-control">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -28,11 +46,35 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confimationModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Confim deletion of plant</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3>Would you like to remove this plant from your collection?</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Remove</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
   <div class="container-modified">
-    <div class="row">
+    <div class="row plant-collection-row">
       <div class="col">
         <img loading="lazy" src="{{ url_for('static', filename='lettuce.webp') }}" alt="lettuce">
         <div class="overlay"></div>
+        <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+          <img src="{{ url_for('static', filename='icon-remove.png') }}" alt="icon-remove">
+        </div>
         <div class="col-item-text">
           <h3>Lettuce</h3>
           <p>20 days till harvest</p>
@@ -41,6 +83,9 @@
       <div class="col">
         <img loading="lazy" src="{{ url_for('static', filename='cucumber.webp') }}" alt="cucumber">
         <div class="overlay"></div>
+        <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+          <img src="{{ url_for('static', filename='icon-remove.png') }}" alt="icon-remove">
+        </div>
         <div class="col-item-text">
           <h3>Cucumber</h3>
           <p>20 days till harvest</p>
@@ -49,6 +94,9 @@
       <div class="col">
         <img loading="lazy" src="{{ url_for('static', filename='tomatoes.webp') }}" alt="tomatoes">
         <div class="overlay"></div>
+        <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+          <img src="{{ url_for('static', filename='icon-remove.png') }}" alt="icon-remove">
+        </div>
         <div class="col-item-text">
           <h3>Tomatoes</h3>
           <p>20 days till harvest</p>
@@ -57,6 +105,9 @@
       <div class="col">
         <img loading="lazy" src="{{ url_for('static', filename='onion.webp') }}" alt="onion">
         <div class="overlay"></div>
+        <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+          <img src="{{ url_for('static', filename='icon-remove.png') }}" alt="icon-remove">
+        </div>
         <div class="col-item-text">
           <h3>Onion</h3>
           <p>20 days till harvest</p>
@@ -65,6 +116,9 @@
       <div class="col">
         <img loading="lazy" src="{{ url_for('static', filename='thyme.webp') }}" alt="thyme">
         <div class="overlay"></div>
+        <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+          <img src="{{ url_for('static', filename='icon-remove.png') }}" alt="icon-remove">
+        </div>
         <div class="col-item-text">
           <h3>Thyme</h3>
           <p>20 days till harvest</p>
@@ -73,6 +127,9 @@
       <div class="col">
         <img loading="lazy" src="{{ url_for('static', filename='basil.webp') }}" alt="basil">
         <div class="overlay"></div>
+        <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+          <img src="{{ url_for('static', filename='icon-remove.png') }}" alt="icon-remove">
+        </div>
         <div class="col-item-text">
           <h3>Basil</h3>
           <p>20 days till harvest</p>
@@ -81,6 +138,9 @@
       <div class="col">
         <img loading="lazy" src="{{ url_for('static', filename='rosemary.webp') }}" alt="rosemary">
         <div class="overlay"></div>
+        <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+          <img src="{{ url_for('static', filename='icon-remove.png') }}" alt="icon-remove">
+        </div>
         <div class="col-item-text">
           <h3>Rosemary</h3>
           <p>20 days till harvest</p>
@@ -89,6 +149,9 @@
       <div class="col">
         <img loading="lazy" src="{{ url_for('static', filename='ginger.webp') }}" alt="ginger">
         <div class="overlay"></div>
+        <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+          <img src="{{ url_for('static', filename='icon-remove.png') }}" alt="icon-remove">
+        </div>
         <div class="col-item-text">
           <h3>Ginger</h3>
           <p>20 days till harvest</p>
@@ -97,4 +160,7 @@
     </div>
   </div>
 </main>
+{% endblock %}
+{% block additionalScript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js" integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {% endblock %}

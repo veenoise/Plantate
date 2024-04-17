@@ -65,7 +65,7 @@ nav {
 .container-modified {
   padding: 60px 90px;
 
-  .row {
+  .plant-collection-row {
     display: grid;
     justify-items: center;
     column-gap: 50px;
@@ -100,6 +100,17 @@ nav {
         border-bottom-right-radius: 16px;
       }
 
+      .item-icon {
+        position: absolute;
+        top: 2%;
+        right: 2%;
+
+        img {
+          display: none;
+          width: 40px;
+        }
+      }
+      
       .col-item-text {
         z-index: 15;
         padding-left: 10px;
@@ -122,6 +133,86 @@ nav {
       border: solid #90CF8E 5px;
       border-radius: 21px;
       cursor: pointer;
+      .item-icon > img {
+        display: block;
+      }
+
+      .item-icon > img:hover {
+        border: solid #e48186 1px;
+        border-radius: 50px;
+        background-color: #e48186;
+        cursor: pointer;
+      }
     }
   }
+}
+
+.modal-body {
+  #outputs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .picture-placeholder, #video-stream-placeholder {
+      height: 250px;
+      width: 250px;
+      border: #90CF8E solid 5px;
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+
+
+.specific-plant {
+  display: flex;
+  justify-content: center;
+  
+  .plant-holder {
+    padding: 0;
+    width: 250px;
+    height: 275px;
+    border-radius: 16px;
+    box-shadow: 5px 10px 15px -3px rgba(0,0,0,0.3);
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+  
+  .plant-description {
+    padding-left: 50px;
+    padding-right: 50px;
+
+    h2 {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    p {
+      margin-bottom: 0;
+      font-size: 20px;
+    }
+  }
+}
+
+#tips {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.gemini-tip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
 }

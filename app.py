@@ -7,6 +7,10 @@ def hello_world():
     return "<p>Hello, William</p>"
 
 
-@app.route("/plants")
+@app.route("/your-plants")
 def plant_collection():
     return render_template('plants.html')
+
+@app.route("/specific-plant")
+def specific():
+    return render_template('plant-specific.html')

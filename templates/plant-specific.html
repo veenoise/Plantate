@@ -1,0 +1,28 @@
+{% extends 'base-template.html' %}
+{% block body %}
+<div class="container">
+  <div class="row specific-plant my-5">
+    <div class="col-lg-6 plant-holder">
+      <img src="{{ url_for('static', filename='lettuce.webp') }}" alt="plant-placeholder">
+    </div>
+    <div class="col-lg-6 plant-description">
+      <h2>Lettuce</h2>
+      <p>Description: This is a picture of a plant</p>
+      <p>Date planted: April 16, 2024</p>
+      <p>Estimated Harvest Date: May 16 - July 16, 2024</p>
+      <div class="specific-plant-option mt-3">
+        <button type="button" class="btn btn-success">Update plant info</button>
+        <button type="button" class="btn btn-danger">Remove plant</button>
+      </div>
+    </div>
+  </div>
+  <h2 id="tips" class="mb-3">Plant Care Tips:</h2>
+  <div class="d-flex justify-content-center mb-5">
+    <button type="button" class="btn btn-success gemini-tip">
+      <img src="{{ url_for('static', filename='google-gemini-icon.svg') }}" alt="ai icon" width="40">
+      Ask Gemini
+    </button>
+  </div>
+</div>
+
+{% endblock %}
