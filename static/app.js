@@ -19,7 +19,7 @@ $("#picture").change(function(){
 var cameraPermission = false;
 $('#take-picture').on('click', function() {
   if (!cameraPermission) {
-    Webcam.set({
+    Webcam.set('constraints', {
       // width: 250,
       // height: 250,
       // dest_width: 250,
@@ -29,6 +29,7 @@ $('#take-picture').on('click', function() {
       // I don't know how to properly get the right size
       image_format: 'webp',
       flip_horiz: true,
+      facingMode:'environment',
     });
 
     // Attach camera here

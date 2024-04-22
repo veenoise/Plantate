@@ -1,6 +1,18 @@
 {% extends 'base-template.html' %}
 {% block additionalCss %}
 {% endblock %}
+{% block home %}
+<a class="nav-link" href="{{ url_for('index') }}">Home</a>
+{% endblock %}
+{% block gemini_doctor %}
+<a class="nav-link" href="{{ url_for('gemini_doctor') }}">
+  <img src="{{ url_for('static', filename='google-gemini-icon.svg' ) }}" height="30" alt="ai icon">
+  Gemini Doctor
+</a>
+{% endblock %}
+{% block plant_collection %}
+<a class="nav-link active" aria-current="page" href="">Plant Collection</a>
+{% endblock %}
 {% block body %}
 <main>
   <div class="add-item" data-bs-toggle="modal" data-bs-target="#add-plant">

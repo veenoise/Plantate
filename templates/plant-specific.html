@@ -11,8 +11,65 @@
       <p>Date planted: April 16, 2024</p>
       <p>Estimated Harvest Date: May 16 - July 16, 2024</p>
       <div class="specific-plant-option mt-3">
-        <button type="button" class="btn btn-success">Update plant info</button>
-        <button type="button" class="btn btn-danger">Remove plant</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal">Update plant info</button>
+        <!-- Modal -->
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="updateModalLabel">Update plant information</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div id="outputs">
+                  <img class="picture-placeholder" alt="Placeholder for the image preview">
+                  <div id="video-stream-placeholder"></div>
+                </div>
+      
+                <div class="mb-3 inputs">
+                  <input class="form-control mb-3" type="file" accept=".jpg, .jpeg, .webp, .png" id="picture">
+                  <p class="text-center mb-3">-- or --</p>
+                  <button id="take-picture" class="btn btn-success">Take a picture</button>
+                </div>
+                <div class="mb-3">
+                  <label for="plantName" class="form-label">Plant name</label>
+                  <input type="text" id="plantName" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="datePlanted" class="form-label">Date planted</label>
+                  <input type="date" id="datePlanted" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="plantDesription" class="form-label">Description (optional)</label>
+                  <input type="text" id="plantDesription" class="form-control">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeModal">Remove plant</button>
+        <!-- Modal -->
+        <div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="removeModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="removeModalLabel">Remove a plant</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to remove the plant?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Remove</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -25,4 +82,7 @@
   </div>
 </div>
 
+{% endblock %}
+{% block additionalScript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js" integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {% endblock %}
