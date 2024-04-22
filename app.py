@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, request
+from gemini import gemini_chat_api_request
 
 app = Flask(__name__)
 
@@ -11,6 +12,13 @@ def home():
 def plant_collection():
     return render_template('plants.html')
 
+
 @app.route("/specific-plant")
 def specific():
     return render_template('plant-specific.html')
+
+
+@app.route('/api/plant-doctor')
+def api_test():
+    message = request.args.get('msg')
+    return jsonify(gemini_chat_api_request(message))
