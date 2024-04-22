@@ -1,0 +1,219 @@
+{% extends 'base-template.html' %}
+{% block body %}
+<main>
+    <div class="container">
+
+        <div class="row g-5">
+            <div id="welcome" class="col">
+                <h1 class="display-1 mt-5" style="font-weight: bold;">Welcome to the Garden</h1>
+                <p class="lead">A place to learn about gardening, explore new techniques, and cultivate your green
+                    thumb.</p>
+            </div>
+
+            <div id="chat" class="col">
+                <div class="shadow rounded-5 my-5" style="background-color: #effdee;">
+                    <div id="chat-gemini" class="p-2">
+                        <div class="m-3 d-flex">
+                            <div class="m-2">
+                                <svg width="40" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8.016A8.522 8.522 0 008.016 16h-.032A8.521 8.521 0 000 8.016v-.032A8.521 8.521 0 007.984 0h.032A8.522 8.522 0 0016 7.984v.032z"
+                                        fill="url(#prefix__paint0_radial_980_20147)" />
+                                    <defs>
+                                        <radialGradient id="prefix__paint0_radial_980_20147" cx="0" cy="0" r="1"
+                                            gradientUnits="userSpaceOnUse"
+                                            gradientTransform="matrix(16.1326 5.4553 -43.70045 129.2322 1.588 6.503)">
+                                            <stop offset=".067" stop-color="#9168C0" />
+                                            <stop offset=".343" stop-color="#5684D1" />
+                                            <stop offset=".672" stop-color="#1BA1E3" />
+                                        </radialGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="p-2 pt-3"
+                                style="font-size: large; font-weight: 500; height: 40vh; overflow-y: auto;">
+                                <p>Hi there! I'm Gemini, your personal gardening assistant!
+                                <p>
+                                <p>Ready to transform your home into a thriving green oasis? Whether you're a curious
+                                    beginner or a seasoned green thumb, I'm here to help you cultivate a flourishing
+                                    garden. <br></p>
+                                <p>Just ask me anything! Seed selection, watering schedules, sunlight needs - you name
+                                    it, I can help you navigate the wonderful world of homegrown plants.</p>
+                                <p>Let's get your green thumbs growing together! </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <div id="chat-message-box" class="d-flex align-items-center"
+                            style="width: 100%; height: 3rem; background-color: white; border-radius: 50vh; padding-left: 1.5rem; padding-right: 1.5rem; ">
+                            <div class="w-100">
+                                <input type="text" placeholder="Enter a prompt here" style="width: 100%;">
+                                <!-- Extra Icons for other functionalities -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <hr>
+            <h2>Suggested Reads</h2>
+        </div>
+
+        <div class="row">
+            <div class="col mt-5">
+                <div class="card mb-3 shadow p-3 bg-body-tertiary rounded-4 w-100">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <img src="https://www.almanac.com/sites/default/files/styles/or/public/image_nodes/girl-tomatoes-shutterstock_440076301_0.jpg"
+                                class="img-fluid rounded" alt="..."
+                                style="height: 100%; width: 100%; max-width: none; overflow: hidden;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-0">
+                                <small class="card-website-origin">blog: almanac.com</small>
+                                <h5 class="card-title">Vegetable Gardening for Beginners: The
+                                    Complete Guide</h5>
+                                <p class="card-text">"This comprehensive guide covers how to
+                                    start a vegetable garden
+                                    from scratch, which vegetables to grow, and when to plant what. We’ve also added a
+                                    “starter” garden plan consisting of easy-to-grow vegetables, companion planting
+                                    techniques, and some lovely flowers! Let this year be the year that you grow a
+                                    successful garden!..."</p>
+                                <div class="card-buttons d-flex justify-content-end align-items-center gap-3">
+                                    <div>
+                                        <a target="_blank"
+                                            href="https://www.almanac.com/vegetable-gardening-for-beginners"
+                                            style="font-weight: bold; color:#90CF8E;">
+                                            Read More
+                                        </a>
+                                    </div>
+                                    <div class="card-summarize">
+                                        <div class="m-1 btn btn-primary d-flex"
+                                            style="background-color: #877ACA; border: 1px #877ACA solid; padding: .6rem .8rem .6rem .8rem">
+                                            <svg width="1.8rem" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8.016A8.522 8.522 0 008.016 16h-.032A8.521 8.521 0 000 8.016v-.032A8.521 8.521 0 007.984 0h.032A8.522 8.522 0 0016 7.984v.032z"
+                                                    fill="#FFFFFF">
+                                            </svg>
+                                            <p class="d-flex justify-content-center text-center"
+                                                style="margin: .1rem 0 0 .5rem; color: white; font-weight: bold;">
+                                                Summarize
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 shadow p-3 bg-body-tertiary rounded-4 w-100">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <img src="https://images.squarespace-cdn.com/content/v1/54fbb611e4b0d7c1e151d22a/1614620924715-7L5TVJ7KLDOA4IIQLEE9/seedling.jpg?format=2500w"
+                                class="img-fluid rounded" alt="..."
+                                style="height: 100%; width: 100%; max-width: none; overflow: hidden;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-0">
+                                <small class="card-website-origin">blog: swansonsnursery.com</small>
+                                <h5 class="card-title">HOW TO START SEEDS INDOORS IN 4 EASY
+                                    STEPS</h5>
+                                <p class="card-text">"Coaxing new life out of a seed is one of
+                                    the highlights of the year for gardeners, right up there with harvesting perfectly
+                                    ripe vegetables (at least in my opinion). I’ll never tire of watching delicate
+                                    seedlings break through the soil and stretch towards the light (hopefully not having
+                                    to stretch too far!) and I love the feeling of productivity that starting seeds
+                                    indoors gives me as winter seems to drag on and on. It’s like a little bit of the
+                                    life and hope of spring inside my home..."</p>
+                                <div class="card-buttons d-flex justify-content-end align-items-center gap-3">
+                                    <div>
+                                        <a target="_blank"
+                                            href="https://www.swansonsnursery.com/blog/how-to-start-seeds-indoors"
+                                            style="font-weight: bold; color:#90CF8E;">
+                                            Read More
+                                        </a>
+                                    </div>
+                                    <div class="card-summarize">
+                                        <div class="m-1 btn btn-primary d-flex"
+                                            style="background-color: #877ACA; border: 1px #877ACA solid; padding: .6rem .8rem .6rem .8rem">
+                                            <svg width="1.8rem" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8.016A8.522 8.522 0 008.016 16h-.032A8.521 8.521 0 000 8.016v-.032A8.521 8.521 0 007.984 0h.032A8.522 8.522 0 0016 7.984v.032z"
+                                                    fill="#FFFFFF">
+                                            </svg>
+                                            <p class="d-flex justify-content-center text-center"
+                                                style="margin: .1rem 0 0 .5rem; color: white; font-weight: bold;">
+                                                Summarize
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 d-none d-xl-block" style="background-color: pink; height: 100%;">
+                <!-- aside -->
+                <!-- no content for now. -->
+                <!-- delete this div, if not needed -->
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<style>
+    input {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        border: none;
+        background: none;
+    }
+
+    .card {
+        background-color: white !important;
+        border: 5px solid rgba(0, 0, 0, 0);
+        transition: border 0.2s;
+    }
+
+    .card-website-origin {
+        font-size: small;
+        color: gray;
+    }
+
+    .card-title {
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: .9rem;
+    }
+
+    .card:hover {
+        border: solid #90CF8E 5px;
+        border-radius: 21px;
+        cursor: pointer;
+    }
+
+    button,
+    input[type="submit"],
+    input[type="reset"] {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
+</style>
+
+{% endblock %}
