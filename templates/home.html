@@ -65,10 +65,9 @@
             <div class="col mt-5">
                 <div class="card mb-3 shadow p-3 bg-body-tertiary rounded-4 w-100">
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="card-image-container col-md-4">
                             <img src="https://www.almanac.com/sites/default/files/styles/or/public/image_nodes/girl-tomatoes-shutterstock_440076301_0.jpg"
-                                class="img-fluid rounded" alt="..."
-                                style="height: 100%; width: 100%; max-width: none; overflow: hidden;">
+                                class="img-fluid rounded" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body p-0">
@@ -111,10 +110,9 @@
                 </div>
                 <div class="card mb-3 shadow p-3 bg-body-tertiary rounded-4 w-100">
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="card-image-container col-md-4">
                             <img src="https://images.squarespace-cdn.com/content/v1/54fbb611e4b0d7c1e151d22a/1614620924715-7L5TVJ7KLDOA4IIQLEE9/seedling.jpg?format=2500w"
-                                class="img-fluid rounded" alt="..."
-                                style="height: 100%; width: 100%; max-width: none; overflow: hidden;">
+                                class="img-fluid rounded" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body p-0">
@@ -157,12 +155,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-4 d-none d-xl-block" style="background-color: pink; height: 100%;">
-                <!-- aside -->
-                <!-- no content for now. -->
-                <!-- delete this div, if not needed -->
-            </div>
         </div>
     </div>
 
@@ -187,6 +179,12 @@
     .card-website-origin {
         font-size: small;
         color: gray;
+    }
+
+    .card-image-container img {
+        height: 100%;
+        overflow: hidden;
+        object-fit: cover;
     }
 
     .card-title {
