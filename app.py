@@ -7,6 +7,11 @@ app = Flask(__name__)
 def index():
     return render_template('home.html')
 
+@app.route("/home")
+def home():
+    return render_template('home.html')
+
+
 @app.route("/your-plants")
 def plant_collection():
     return render_template('plants.html')
@@ -15,15 +20,18 @@ def plant_collection():
 def specific():
     return render_template('plant-specific.html')
 
+
 @app.route("/gemini-doctor")
 def gemini_doctor():
     return render_template('gemini-doctor.html')
+
 
 @app.route("/login")
 def login():
     return render_template('login.html')
 
+
 @app.route('/api/plant-doctor')
 def api_test():
     message = request.args.get('msg')
-    return jsonify(gemini_chat_api_request(message))
+    return f'{gemini_chat_api_request(message)}'
