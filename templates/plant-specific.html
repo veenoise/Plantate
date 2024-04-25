@@ -1,7 +1,22 @@
 {% extends 'base-template.html' %}
+{% block home %}
+<a class="nav-link" href="{{ url_for('index') }}">Home</a>
+{% endblock %}
+{% block gemini_doctor %}
+<a class="nav-link" href="{{ url_for('gemini_doctor') }}">
+  <img src="{{ url_for('static', filename='google-gemini-icon.svg' ) }}" height="30" alt="ai icon">
+  Gemini Doctor
+</a>
+{% endblock %}
+{% block plant_collection %}
+<a class="nav-link  active" aria-current="page" href="">Plant Collection</a>
+{% endblock %}
 {% block body %}
 <div class="container">
-  <div class="row specific-plant my-5">
+  <a href="{{ url_for('plant_collection') }}">
+    <img src="{{ url_for('static', filename='icon-back.png') }}" alt="back button" class="my-3 back-button">
+  </a>
+  <div class="row specific-plant mb-5">
     <div class="col-lg-6 plant-holder">
       <img src="{{ url_for('static', filename='lettuce.webp') }}" alt="plant-placeholder">
     </div>

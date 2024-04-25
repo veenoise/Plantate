@@ -23,38 +23,40 @@
   <div class="modal fade" id="add-plant" tabindex="-1" aria-labelledby="add-plant" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modalLabel">Add a plant to your collection</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div id="outputs">
-            <img class="picture-placeholder" alt="Placeholder for the image preview">
-            <div id="video-stream-placeholder"></div>
+        <form action="" method="post">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalLabel">Add a plant to your collection</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+          <div class="modal-body">
+            <div id="outputs">
+              <img class="picture-placeholder" alt="Placeholder for the image preview">
+              <div id="video-stream-placeholder"></div>
+            </div>
 
-          <div class="mb-3 inputs">
-            <input class="form-control mb-3" type="file" accept=".jpg, .jpeg, .webp, .png" id="picture">
-            <p class="text-center mb-3">-- or --</p>
-            <button id="take-picture" class="btn btn-success">Take a picture</button>
+            <div class="mb-3 inputs">
+              <input class="form-control mb-3" type="file" accept=".jpg, .jpeg, .webp, .png" id="picture">
+              <p class="text-center mb-3">-- or --</p>
+              <button id="take-picture" type="button" class="btn btn-success">Take a picture</button>
+            </div>
+            <div class="mb-3">
+              <label for="plantName" class="form-label">Plant name</label>
+              <input type="text" id="plantName" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="datePlanted" class="form-label">Date planted</label>
+              <input type="date" id="datePlanted" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="plantDesription" class="form-label">Description (optional)</label>
+              <input type="text" id="plantDesription" class="form-control">
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="plantName" class="form-label">Plant name</label>
-            <input type="text" id="plantName" class="form-control" required>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Add plant</button>
           </div>
-          <div class="mb-3">
-            <label for="datePlanted" class="form-label">Date planted</label>
-            <input type="date" id="datePlanted" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label for="plantDesription" class="form-label">Description (optional)</label>
-            <input type="text" id="plantDesription" class="form-control">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success">Add plant</button>
-        </div>
+        </form>
       </div>
     </div>
   </div>

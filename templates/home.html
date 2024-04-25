@@ -1,4 +1,16 @@
 {% extends 'base-template.html' %}
+{% block home %}
+<a class="nav-link active" aria-current="page" href="">Home</a>
+{% endblock %}
+{% block gemini_doctor %}
+<a class="nav-link" href="{{ url_for('gemini_doctor') }}">
+  <img src="{{ url_for('static', filename='google-gemini-icon.svg' ) }}" height="30" alt="ai icon">
+  Gemini Doctor
+</a>
+{% endblock %}
+{% block plant_collection %}
+<a class="nav-link" href="{{ url_for('plant_collection') }}">Plant Collection</a>
+{% endblock %}
 {% block body %}
 <main>
     <div class="container">
@@ -67,7 +79,7 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <img src="https://www.almanac.com/sites/default/files/styles/or/public/image_nodes/girl-tomatoes-shutterstock_440076301_0.jpg"
-                                class="img-fluid rounded" alt="..."
+                                class="img-fluid rounded object-fit-cover" alt="..."
                                 style="height: 100%; width: 100%; max-width: none; overflow: hidden;">
                         </div>
                         <div class="col-md-8">
@@ -113,7 +125,7 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <img src="https://images.squarespace-cdn.com/content/v1/54fbb611e4b0d7c1e151d22a/1614620924715-7L5TVJ7KLDOA4IIQLEE9/seedling.jpg?format=2500w"
-                                class="img-fluid rounded" alt="..."
+                                class="img-fluid rounded object-fit-cover" alt="..."
                                 style="height: 100%; width: 100%; max-width: none; overflow: hidden;">
                         </div>
                         <div class="col-md-8">

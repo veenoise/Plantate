@@ -170,7 +170,13 @@ nav {
 
 
 
-
+.back-button:hover {
+  background-color: #90CF8E;
+  border: 5px solid #90CF8E;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 64px;
+}
 .specific-plant {
   display: flex;
   justify-content: center;

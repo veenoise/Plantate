@@ -5,13 +5,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<p>Hello, William</p>"
-
+    return render_template('home.html')
 
 @app.route("/your-plants")
 def plant_collection():
     return render_template('plants.html')
-
 
 @app.route("/specific-plant")
 def specific():
