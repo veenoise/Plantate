@@ -81,9 +81,9 @@
   </div>
   
 
-  <div class="container-modified">
-    <div class="row plant-collection-row">
-      <div class="col">
+  <div class="container-modified container py-5">
+    <div class="row plant-collection-row justify-content-center gap-5">
+      <div class="col col-lg-3 col-md-6 col-12">
         <img loading="lazy" src="{{ url_for('static', filename='lettuce.webp') }}" alt="lettuce">
         <div class="overlay"></div>
         <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
@@ -94,7 +94,7 @@
           <p>20 days till harvest</p>
         </div>
       </div>
-      <div class="col">
+      <div class="col col-lg-3 col-md-6 col-12">
         <img loading="lazy" src="{{ url_for('static', filename='cucumber.webp') }}" alt="cucumber">
         <div class="overlay"></div>
         <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
@@ -105,7 +105,7 @@
           <p>20 days till harvest</p>
         </div>
       </div>
-      <div class="col">
+      <div class="col col-lg-3 col-md-6 col-12">
         <img loading="lazy" src="{{ url_for('static', filename='tomatoes.webp') }}" alt="tomatoes">
         <div class="overlay"></div>
         <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
@@ -116,7 +116,7 @@
           <p>20 days till harvest</p>
         </div>
       </div>
-      <div class="col">
+      <div class="col col-lg-3 col-md-6 col-12">
         <img loading="lazy" src="{{ url_for('static', filename='onion.webp') }}" alt="onion">
         <div class="overlay"></div>
         <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
@@ -127,7 +127,7 @@
           <p>20 days till harvest</p>
         </div>
       </div>
-      <div class="col">
+      <div class="col col-lg-3 col-md-6 col-12">
         <img loading="lazy" src="{{ url_for('static', filename='thyme.webp') }}" alt="thyme">
         <div class="overlay"></div>
         <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
@@ -138,7 +138,7 @@
           <p>20 days till harvest</p>
         </div>
       </div>
-      <div class="col">
+      <div class="col col-lg-3 col-md-6 col-12">
         <img loading="lazy" src="{{ url_for('static', filename='basil.webp') }}" alt="basil">
         <div class="overlay"></div>
         <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
@@ -149,7 +149,7 @@
           <p>20 days till harvest</p>
         </div>
       </div>
-      <div class="col">
+      <div class="col col-lg-3 col-md-6 col-12">
         <img loading="lazy" src="{{ url_for('static', filename='rosemary.webp') }}" alt="rosemary">
         <div class="overlay"></div>
         <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
@@ -160,7 +160,7 @@
           <p>20 days till harvest</p>
         </div>
       </div>
-      <div class="col">
+      <div class="col col-lg-3 col-md-6 col-12">
         <img loading="lazy" src="{{ url_for('static', filename='ginger.webp') }}" alt="ginger">
         <div class="overlay"></div>
         <div class="item-icon" data-bs-toggle="modal" data-bs-target="#confirmationModal">
@@ -177,4 +177,33 @@
 {% endblock %}
 {% block additionalScript %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js" integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const data = {
+      picture: "hello",
+      plant_name: "",
+      date_planted: "",
+      plant_description: "",
+    }
+
+    function sendPost() {
+      fetch(
+      "{{ url_for('plant_collection') }}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then(e => {
+        console.log("success");
+      }).catch(error => {
+        console.error(error);
+      }) 
+    };
+
+    $('.modal-footer > .btn-success').on('click', function () {
+      sendPost();
+    })
+  })
+</script>
 {% endblock %}

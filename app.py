@@ -1,7 +1,20 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, session, redirect, url_for
 from gemini import gemini_chat_api_request
+from dotenv import load_dotenv
+from os import getenv
+from hashlib import pbkdf2_hmac
+from cs50 import SQL
+
+db = SQL("sqlite:///dbPlantate.sqlite")
+
+ITERATION = 600_000
+SALT = getenv('SALT_HASH').encode('utf-8')
+
+load_dotenv()
 
 app = Flask(__name__)
+
+app.secret_key = getenv('SESSION_KEY').encode('utf-8')
 
 @app.route("/")
 def index():
@@ -11,9 +24,11 @@ def index():
 def home():
     return render_template('home.html')
 
-
-@app.route("/your-plants")
+@app.route("/your-plants", methods=['GET', 'POST'])
 def plant_collection():
+    if request.method == 'POST':
+        json_data = request.json
+        print(json_data)
     return render_template('plants.html')
 
 @app.route("/specific-plant")
@@ -25,11 +40,49 @@ def specific():
 def gemini_doctor():
     return render_template('gemini-doctor.html')
 
-
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
+    session.clear()
+
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        
+        row = db.execute("SELECT * FROM tblUser WHERE strEmail = ?", email)
+
+        if len(row) != 0:
+            password = pbkdf2_hmac('sha256', password.encode('utf-8'), SALT * 2, ITERATION).hex()
+            row = db.execute("SELECT strPassword FROM tblUser WHERE strEmail = ?", email)
+
+            if len(row) != 0 and password == row[0]['strPassword']:
+                session['user'] = email
+                return redirect(url_for('home'))
+            
+            return render_template('login.html', invalid_message = 'Uh oh! Email or password incorrect.')
+
+        return render_template('login.html', invalid_message = 'Uh oh! Email or password incorrect.')
+    
     return render_template('login.html')
 
+@app.route("/signup", methods=['GET', 'POST'])
+def signup():
+    session.clear()
+    
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        row = db.execute("SELECT * FROM tblUser WHERE strEmail = ?", email)
+
+        if len(row) == 0:
+            password = pbkdf2_hmac('sha256', password.encode('utf-8'), SALT * 2, ITERATION).hex()
+            db.execute("INSERT INTO tblUser (strEmail, strPassword) VALUES (?, ?)", email, password)
+            session['user'] = email
+
+        else:
+            return render_template('signup.html', invalid_message='Uh oh! Email address already taken.')
+        return redirect(url_for('home'))
+    return render_template('signup.html')
 
 @app.route('/api/plant-doctor')
 def api_test():

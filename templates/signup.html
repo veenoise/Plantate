@@ -5,7 +5,7 @@
 {% block form %}
 <div class="login-form-container">
   <div class="login-card-container p-5">
-    <form action="{{ url_for('login') }}" method="post">
+    <form action="{{ url_for('signup') }}" method="post">
       <legend>Welcome</legend>
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -26,13 +26,13 @@
         {{ invalid_message }}
       </div>
       <div class="submit-container">
-        <button type="submit" class="btn btn-success">Login</button>
+        <button type="submit" class="btn btn-success">Sign up</button>
       </div>
     </form>
     <div class="redirect text-center mt-2">
-      Don't have an account? 
-      <a href="{{ url_for('signup') }}">
-        Signup
+      Already have an account? 
+      <a href="{{ url_for('login') }}">
+        Login
       </a>
     </div>
   </div>

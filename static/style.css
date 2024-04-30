@@ -4,6 +4,102 @@
   box-sizing: border-box;
 }
 
+.danger {
+  color: #dd3445;
+}
+
+body {
+  background-color: #FAFEFA;
+}
+
+.login-row {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-login-container {
+  height: 100vh;
+  height: 100vh;
+  /* border: solid red 1px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .logo-login {
+    /* border: solid black 1px; */
+    
+    justify-content: center;
+
+    .plantate-logo {
+      width: 118px;
+    }
+  }
+
+  .logo-name {
+    color: #90CF8E;
+  }
+
+  .motto {
+    color: #198754;
+  }
+}
+
+.login-form-container {
+  /* border: solid red 1px; */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .login-card-container {
+    border-radius: 20px;
+    box-shadow: 5px 10px 15px -3px rgba(0,0,0,0.3);
+    background-color: #fcfffc;
+    
+    legend {
+      font-weight: bold;
+      color: #198754;
+    }
+
+    .password-field {
+      position:relative;
+
+      button {
+        position: absolute;
+        top: 25%;
+        right: 3%;
+        background: none;
+        padding: none;
+        margin: none;
+        border: none;
+      }
+
+      /* span:hover {
+        cursor: pointer;
+      } */
+    }
+
+    .submit-container {
+      display: flex;
+      justify-content: end;
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    .redirect {
+
+      a {
+        text-decoration: none;
+      }
+    }
+    
+  }
+}
+
 .add-item {
   visibility: visible;
   img {
@@ -63,14 +159,8 @@ nav {
 }
 
 .container-modified {
-  padding: 60px 90px;
 
   .plant-collection-row {
-    display: grid;
-    justify-items: center;
-    column-gap: 50px;
-    row-gap: 45px;
-    grid-template-columns: 1fr 1fr 1fr 1fr !important;
    
     .col {
       padding: 0;

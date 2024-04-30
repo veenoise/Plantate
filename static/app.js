@@ -49,3 +49,16 @@ $('.modal').on('hidden.bs.modal', function() {
   $('.picture-placeholder').attr('src', '');
   cameraPermission = false;
 });
+
+
+// Password
+$('.eye-icon').on('click', function() {
+  let eye = this.innerHTML;
+  if (eye === "visibility") {
+    this.innerHTML = "visibility_off";
+    $("#password")[0].setAttribute('type', 'password');
+  } else {
+    this.innerHTML = "visibility";
+    $("#password")[0].setAttribute('type', 'text');
+  }
+})
