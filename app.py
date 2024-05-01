@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from os import getenv
 from hashlib import pbkdf2_hmac
 from cs50 import SQL
-
 db = SQL("sqlite:///dbPlantate.sqlite")
 
 ITERATION = 600_000
@@ -16,13 +15,20 @@ app = Flask(__name__)
 
 app.secret_key = getenv('SESSION_KEY').encode('utf-8')
 
+def check_session():
+    if session:
+        return True
+    return False
+
 @app.route("/")
 def index():
-    return render_template('home.html')
+    is_authenticated = check_session()
+
+    return render_template('home.html', is_authenticated = is_authenticated)
 
 @app.route("/home")
 def home():
-    return render_template('home.html')
+    return redirect(url_for('index'))
 
 @app.route("/your-plants", methods=['GET', 'POST'])
 def plant_collection():
@@ -40,9 +46,15 @@ def specific():
 def gemini_doctor():
     return render_template('gemini-doctor.html')
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('home'))
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    session.clear()
+    if session:
+        return redirect(url_for('home'))
 
     if request.method == 'POST':
         email = request.form['email']
@@ -66,7 +78,8 @@ def login():
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
-    session.clear()
+    if session:
+        return redirect(url_for('home'))
     
     if request.method == 'POST':
         email = request.form['email']
