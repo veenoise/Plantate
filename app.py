@@ -26,7 +26,12 @@ def inject_current_user():
 
 @app.route("/")
 def index():
-    return render_template('home.html')
+    
+    # If logged in, skip hero section
+    if session:
+        return redirect(url_for('home'))
+    
+    return render_template('index.html')
 
 @app.route("/home")
 def home():

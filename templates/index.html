@@ -1,0 +1,25 @@
+{% extends 'base-template.html' %}
+
+{% block body %}
+
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">Grow Plants with the help of AI, on Plantate</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Never talk to a wilting plant again! Plantate's AI gardening companion is here to help you
+            thrive. Ask our friendly AI anything about your plants, and get instant answers and advice. Identify
+            what you're growing, receive care tips based on your specific plant, and discover a wealth of gardening
+            knowledge – all in one place. Plantate makes gardening easy and enjoyable, for beginners and green
+            thumbs alike.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <a href="{{ url_for('signup') }}"><button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Get Started</button></a>
+            <a href="{{ url_for('login') }}"><button type="button" class="btn btn-outline-secondary btn-lg px-4">View Demo</button></a>
+        </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 45vh;">
+        <div class="container px-5">
+            <img src="{{ url_for('static', filename='Plantate_screenshot_1440x900.png') }}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image"
+                width="900" height="600" loading="lazy">
+        </div>
+    </div>
+</div>
+{% endblock %}
