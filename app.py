@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from os import getenv
 from hashlib import pbkdf2_hmac
 from cs50 import SQL
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+
 db = SQL("sqlite:///dbPlantate.sqlite")
 
 ITERATION = 600_000
@@ -15,19 +17,22 @@ app = Flask(__name__)
 
 app.secret_key = getenv('SESSION_KEY').encode('utf-8')
 
-def check_session():
+@app.context_processor
+def inject_current_user():
+    # Injects the current user into the context of all templates.
     if session:
-        return True
-    return False
+        return dict(current_user = session['user'])
+    return dict(current_user = None)
 
 @app.route("/")
 def index():
-    is_authenticated = check_session()
-
-    return render_template('home.html', is_authenticated = is_authenticated)
+    return render_template('home.html')
 
 @app.route("/home")
 def home():
+    # Redirects to index()
+    # Don't remove, other routes depend on this
+    # and having /home is nice
     return redirect(url_for('index'))
 
 @app.route("/your-plants", methods=['GET', 'POST'])
