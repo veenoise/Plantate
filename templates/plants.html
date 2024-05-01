@@ -23,7 +23,7 @@
   <div class="modal fade" id="add-plant" tabindex="-1" aria-labelledby="add-plant" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <form action="" method="post">
+        <form action="{{ url_for('plant_collection') }}" method="post" enctype="multipart/form-data">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="modalLabel">Add a plant to your collection</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="mb-3 inputs">
-              <input class="form-control mb-3" type="file" accept=".jpg, .jpeg, .webp, .png" id="picture">
+              <input class="form-control mb-3" type="file" accept=".jpg, .jpeg, .webp, .png .gif" id="picture" name="file">
               <p class="text-center mb-3">-- or --</p>
               <button id="take-picture" type="button" class="btn btn-success">Take a picture</button>
             </div>
@@ -177,33 +177,4 @@
 {% endblock %}
 {% block additionalScript %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js" integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const data = {
-      picture: "hello",
-      plant_name: "",
-      date_planted: "",
-      plant_description: "",
-    }
-
-    function sendPost() {
-      fetch(
-      "{{ url_for('plant_collection') }}", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }).then(e => {
-        console.log("success");
-      }).catch(error => {
-        console.error(error);
-      }) 
-    };
-
-    $('.modal-footer > .btn-success').on('click', function () {
-      sendPost();
-    })
-  })
-</script>
 {% endblock %}

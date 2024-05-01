@@ -51,7 +51,7 @@ $('.modal').on('hidden.bs.modal', function() {
 });
 
 
-// Password
+// Password in login/signup
 $('.eye-icon').on('click', function() {
   let eye = this.innerHTML;
   if (eye === "visibility") {
@@ -62,3 +62,5 @@ $('.eye-icon').on('click', function() {
     $("#password")[0].setAttribute('type', 'text');
   }
 })
+
+// /your-plants

@@ -13,14 +13,14 @@
 <body>
   <div class="login-row">
     <div class="row container">
-      <div class="col-6 logo-login-container">
+      <div class="col-sm-12 col-md-6 col-lg-6 logo-login-container py-5">
         <div class="logo-login d-flex justify-content-center">
           <img src="{{ url_for('static', filename='plantate-logo-128.webp') }}" alt="Pantate logo" class="plantate-logo">
         </div>
         <h1 class="logo-name">Plantate</h1>
-        <h2 class="motto">Your sustainable garden guide.</h2>
+        <h2 class="motto text-center">Your sustainable garden guide.</h2>
       </div>
-      <div class="col-6">
+      <div class="col-sm-12 col-md-6 col-lg-6 something py-5 my-5">
         {% block form %}
         {% endblock %}
       </div>

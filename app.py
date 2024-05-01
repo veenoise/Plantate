@@ -1,20 +1,30 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for
 from gemini import gemini_chat_api_request
 from dotenv import load_dotenv
-from os import getenv
+import os
 from hashlib import pbkdf2_hmac
 from cs50 import SQL
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = './static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpeg', 'jpg', 'webp', 'gif'}
 
 db = SQL("sqlite:///dbPlantate.sqlite")
 
 ITERATION = 600_000
-SALT = getenv('SALT_HASH').encode('utf-8')
+SALT = os.getenv('SALT_HASH').encode('utf-8')
 
 load_dotenv()
 
 app = Flask(__name__)
 
-app.secret_key = getenv('SESSION_KEY').encode('utf-8')
+app.secret_key = os.getenv('SESSION_KEY').encode('utf-8')
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route("/")
 def index():
@@ -27,8 +37,16 @@ def home():
 @app.route("/your-plants", methods=['GET', 'POST'])
 def plant_collection():
     if request.method == 'POST':
-        json_data = request.json
-        print(json_data)
+        if 'file' not in request.files:
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('plant_collection', name=filename))
+
     return render_template('plants.html')
 
 @app.route("/specific-plant")
