@@ -1,10 +1,9 @@
-from flask import Flask, render_template, jsonify, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for
 from gemini import gemini_chat_api_request
 from dotenv import load_dotenv
 from os import getenv
 from hashlib import pbkdf2_hmac
 from cs50 import SQL
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 db = SQL("sqlite:///dbPlantate.sqlite")
 
