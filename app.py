@@ -28,7 +28,7 @@ def index():
     
     # If logged in, skip hero section
     if session:
-        return redirect(url_for('home'))
+        return render_template('home.html')
     
     return render_template('index.html')
 
@@ -63,7 +63,7 @@ def logout():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if session:
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
     if request.method == 'POST':
         email = request.form['email']
