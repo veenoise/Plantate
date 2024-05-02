@@ -1,6 +1,8 @@
+![Plantate Logo](./banner.png)
+
 # Plantate
 
-If virtual environment is not setup.
+If the virtual environment is not set up, run the following command:
 
 ```
 python3 -m venv .venv

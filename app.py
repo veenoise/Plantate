@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for
 from gemini import gemini_chat_api_request
 from dotenv import load_dotenv
 import os
@@ -26,13 +26,28 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+@app.context_processor
+def inject_current_user():
+    # Injects the current user into the context of all templates.
+    if session:
+        return dict(current_user = session['user'])
+    return dict(current_user = None)
+
 @app.route("/")
 def index():
-    return render_template('home.html')
+    
+    # If logged in, skip hero section
+    if session:
+        return render_template('home.html')
+    
+    return render_template('index.html')
 
 @app.route("/home")
 def home():
-    return render_template('home.html')
+    # Redirects to index()
+    # Don't remove, other routes depend on this
+    # and having /home is nice
+    return redirect(url_for('index'))
 
 @app.route("/your-plants", methods=['GET', 'POST'])
 def plant_collection():
@@ -58,9 +73,15 @@ def specific():
 def gemini_doctor():
     return render_template('gemini-doctor.html')
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('home'))
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    session.clear()
+    if session:
+        return redirect(url_for('index'))
 
     if request.method == 'POST':
         email = request.form['email']
@@ -84,7 +105,8 @@ def login():
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
-    session.clear()
+    if session:
+        return redirect(url_for('home'))
     
     if request.method == 'POST':
         email = request.form['email']
